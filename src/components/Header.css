@@ -1,0 +1,16 @@
+.header {
+  height: 59px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.headerTitle {
+  float: left;
+  padding: 20px;
+}
+
+.headerLink {
+  float: left;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+}

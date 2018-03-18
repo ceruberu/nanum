@@ -1,0 +1,11 @@
+.nav-icon {
+  float: left;
+  padding: 20px;
+}
+
+.nav-bar {
+  float: left;
+  border-bottom: 1px solid #999;
+  padding-top: 20px;
+  margin-left: 20px;
+}
