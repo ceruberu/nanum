@@ -1,11 +1,18 @@
 .nav-icon {
-  float: left;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
 }
 
 .nav-bar {
-  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.nav-address {
   border-bottom: 1px solid #999;
-  padding-top: 20px;
-  margin-left: 20px;
 }

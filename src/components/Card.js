@@ -15,8 +15,8 @@ class Card extends Component {
             <span className="card-location">인천 계양구 계산4동</span>             
             <span className="card-receive">직접수령</span>
           </div>
-          <Link className="info link-item" to="/item">
-            <span className="card-title">전신거울 필요하신분 무료나눔해요</span>
+          <Link className="info link-item card-title" to="/item">
+            전신거울 필요하신분 무료나눔해요
           </Link>
           <div className="info">
             <span className="card-tags">#거울</span>

@@ -1,10 +1,39 @@
 .card-container {
   display: flex;
+  /* justify-content: space-evenly; */
+  padding: 10px;
   flex-wrap: wrap;
-  width: 100%;
-  min-width: 758px;
+  /* tweak where items line
+     up on the row
+     valid values are: flex-start,
+     flex-end, space-between,
+     space-around, stretch */
+  /* align-content: flex-end; */
+}
+/* 
+.card-container:after {
+  content: "";
+  flex: auto;
+} */
+
+.nav-icon {
+
 }
 
+
 .nav-filter {
-  height: 40px;
+  display: flex;
+  height: 59px;
+}
+
+@media all and (max-width: 1690px) { }
+@media all and (max-width: 1280px) { }
+@media all and (max-width: 980px) {  }
+@media all and (max-width: 736px) {  }
+@media all and (max-width: 480px) {
+  .card-container {
+    flex-direction: column;
+  }
+
+
 }

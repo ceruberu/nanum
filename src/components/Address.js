@@ -26,7 +26,8 @@ class Address extends Component {
         googleMapsGeocoder.geocode(
           { 'latLng': googleMapPosition },
           ( results, status ) => {
-            const address = this.formatAddress(results[0]);
+            console.log(results);
+            const address = this.formatAddress(results[7]);
             this.setState({
               address
             });
@@ -40,10 +41,8 @@ class Address extends Component {
   }
   render() {
     return (
-      <div
-        type="text"
-        className="nav-bar">
-        {this.state.address}
+      <div className="nav-bar">
+        <span className="nav-address">{this.state.address}</span>
       </div>
     );
   }
