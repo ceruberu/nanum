@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Address from '../components/Address';
+import NavUser from '../components/NavUser';
 import 'font-awesome/css/font-awesome.min.css';
 import './Header.css';
 
@@ -53,6 +54,7 @@ class Header extends Component {
         <button className="show-search-button" onClick={()=>this.clickSearch()}>
           <i className="nav-search fa fa-search"/>
         </button>
+        <NavUser />
       </div>
       ,
       <div className="header-nav" key="123455">

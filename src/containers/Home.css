@@ -1,23 +1,7 @@
 .card-container {
   display: flex;
-  /* justify-content: space-evenly; */
   padding: 10px;
   flex-wrap: wrap;
-  /* tweak where items line
-     up on the row
-     valid values are: flex-start,
-     flex-end, space-between,
-     space-around, stretch */
-  /* align-content: flex-end; */
-}
-/* 
-.card-container:after {
-  content: "";
-  flex: auto;
-} */
-
-.nav-icon {
-
 }
 
 @media all and (max-width: 1690px) {

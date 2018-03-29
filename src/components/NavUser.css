@@ -1,0 +1,42 @@
+.navUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 59px;
+  box-sizing: border-box;
+}
+.userDisplay {
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+.userName {
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+@media all and (max-width: 1690px) {
+  .navUser {
+    padding-right: 20px;
+  }
+}
+@media all and (max-width: 1280px) { 
+
+}
+@media all and (max-width: 980px) { 
+  .userName {
+    display: inline-block;
+  }
+
+}
+@media all and (max-width: 736px) { 
+  .navUser {
+    width: 59px;
+  }
+  .userName {
+    display: none;
+  }
+}
+@media all and (max-width: 480px) {
+}
