@@ -16,6 +16,15 @@
   white-space: nowrap;
 }
 
+.loginLink {
+  color: black;
+  background-color: #298EE3;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 10px;
+}
+
 @media all and (max-width: 1690px) {
   .navUser {
     padding-right: 20px;

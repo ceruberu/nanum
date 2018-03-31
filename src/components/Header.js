@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Address from '../components/Address';
 import NavUser from '../components/NavUser';
@@ -8,9 +9,11 @@ import './Header.css';
 class Header extends Component {
   constructor(props){
     super(props);
+    console.log("PROPS:: ",props);
     this.state = {
       isSearching: false
     };
+    console.log("STATE::", this.state);
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -32,6 +35,7 @@ class Header extends Component {
   }
 
   render() {
+    const { user } = this.props;
 
     return [
       <div className="header" key="1234">
@@ -54,7 +58,7 @@ class Header extends Component {
         <button className="show-search-button" onClick={()=>this.clickSearch()}>
           <i className="nav-search fa fa-search"/>
         </button>
-        <NavUser />
+        <NavUser isAuthenticated={user.isAuthenticated}/>
       </div>
       ,
       <div className="header-nav" key="123455">
@@ -66,4 +70,12 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(Header);
