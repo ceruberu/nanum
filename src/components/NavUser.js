@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import UserDisplay from '../images/userDisplay.jpg';
 import './NavUser.css';
 
@@ -11,7 +10,7 @@ const NavUser = (props) => {
     </div>
   :     
     <div className="navUser">
-      <Link to="/login" className="loginLink"> 로그인 </Link>
+      <div className="loginLink" onClick={()=>props.onLoginClick("login")}> 로그인 </div>
     </div>
 
 };

@@ -23,6 +23,7 @@
   text-decoration: none;
   white-space: nowrap;
   padding: 10px;
+  cursor: pointer;
 }
 
 @media all and (max-width: 1690px) {

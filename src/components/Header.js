@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Address from '../components/Address';
 import NavUser from '../components/NavUser';
+import { openModal } from '../actions/modalAction';
 import 'font-awesome/css/font-awesome.min.css';
 import './Header.css';
 
@@ -35,8 +36,8 @@ class Header extends Component {
   }
 
   render() {
-    const { user } = this.props;
-
+    const { user, onLoginClick } = this.props;
+    console.log("MAP DISAPTCH::", this.props);
     return [
       <div className="header" key="1234">
         <div className="headerTitle">나눔</div>
@@ -58,7 +59,10 @@ class Header extends Component {
         <button className="show-search-button" onClick={()=>this.clickSearch()}>
           <i className="nav-search fa fa-search"/>
         </button>
-        <NavUser isAuthenticated={user.isAuthenticated}/>
+        <NavUser 
+          isAuthenticated={user.isAuthenticated}
+          onLoginClick={modal => onLoginClick(modal)}   
+        />
       </div>
       ,
       <div className="header-nav" key="123455">
@@ -76,6 +80,15 @@ const mapStateToProps = state => {
   };
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoginClick: (modal) => {
+      dispatch(openModal(modal));
+    }
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Header);
