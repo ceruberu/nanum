@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import IconInput from './IconInput';
-import { validateEmail } from '../utils/formValidators';
 
 import './SignupModal.css';
 
@@ -27,7 +26,6 @@ class SignupModal extends Component {
   }
 
   handleSubmit(){
-    const emailEnum = validateEmail(this.state.email);
 
   }
 

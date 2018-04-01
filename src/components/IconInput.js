@@ -10,7 +10,7 @@ class IconInput extends Component {
   }
 
   render() {
-    const { inputProps, changeHandler, iconClass, inputPattern } = this.props;
+    const { inputProps, changeHandler, iconClass } = this.props;
     
     return (
       <div className={`inputContainer ${this.state.focused ? "focus" : ""}`} >

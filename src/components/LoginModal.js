@@ -57,8 +57,8 @@ class LoginModal extends Component {
               name: "password",
               type: "password",
               placeholder: "비밀번호",
-              pattern: "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$",
-              title: "비밀번호는 문자, 숫자의 조합으로 최소 8자리를 사용해야 합니다ะ"
+              pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+              title: "비밀번호는 문자, 숫자의 조합으로 최소 8자리를 사용해야 합니다"
             }}
             value={this.state.password}
             changeHandler={this.handleInputChange}

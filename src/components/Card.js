@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import ExampleItem1 from '../images/exampleItem1.jpg';
 import './Card.css';
 
@@ -16,7 +17,7 @@ class Card extends Component {
             <span className="card-receive">직접수령</span>
           </div>
           <Link className="info link-item card-title" to="/item">
-            전신거울 필요하신분 무료나눔해요
+            {this.props.item.title}
           </Link>
           <div className="info">
             <span className="card-tags">#거울</span>
