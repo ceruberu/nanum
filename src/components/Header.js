@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import Address from '../components/Address';
 import NavUser from '../components/NavUser';
 import { openModal } from '../actions/modalAction';
-import 'font-awesome/css/font-awesome.min.css';
 import './Header.css';
 
 class Header extends Component {

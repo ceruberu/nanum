@@ -1,0 +1,26 @@
+.inputContainer {
+  display: flex;
+  height: 50px;
+  border: 1px solid #DBDBDB;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.inputContainer.focus {
+  border-color: #008489;
+}
+
+.inputContainer input{
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+}
+
+.inputIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+}

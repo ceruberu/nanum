@@ -27,7 +27,7 @@ class Modal extends Component {
         <div className="modal">
           <div className="modalHeader">
             <button className="modalCloseButton" onClick={()=>onCloseClick()}>
-              <i className="fas fa-times fa-lg"  />
+              <i className="fas fa-times fa-lg" />
             </button>
           </div>
           { modalComponent }

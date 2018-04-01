@@ -8,7 +8,6 @@ export function openModal(modal) {
 }
 
 export function closeModal() {
-  console.log("CLOSE");
   return {
     type: CLOSE_MODAL,
     modal: false

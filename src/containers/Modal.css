@@ -25,11 +25,10 @@ body.modalOpen {
   justify-content: stretch;
   position: relative;
   z-index: 200;
-  width: 736px;
-  height: 600px;
+  width: 600px;
   background-color: white;
-  border-radius: 8px;
   padding: 32px;
+  box-sizing: border-box;
 }
 
 .modalHeader {
@@ -54,5 +53,8 @@ body.modalOpen {
 @media all and (max-width: 736px) { 
   .modal {
     width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    padding: 32px;
   }
 }

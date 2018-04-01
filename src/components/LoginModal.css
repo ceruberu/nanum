@@ -3,3 +3,109 @@
   display: flex;
   flex-direction: column;
 }
+
+.socialLogins {
+  display: flex;
+  flex-direction: column;
+}
+
+.socialLogins div {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.socialLogo {
+  margin-right: 8px;
+}
+
+.facebookLogin {
+  color: white;
+  background-color: #4568b2;
+  margin-bottom: 8px;
+}
+
+.googleLogin {
+  border: 2px solid #767676;
+}
+
+.separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 25px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.separatorText {
+  color: #767676;
+}
+
+.separatorText::before {
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid #e4e4e4;
+  top: 50%;
+  left: 0%;
+  width: 44%;
+  z-index: -1;
+}
+
+.separatorText::after {
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid #e4e4e4;
+  top: 50%;
+  right: 0%;
+  width: 44%;
+  z-index: -1;
+}
+
+.emailLoginForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.forgotPassword {
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: #008489;
+}
+
+.emailLogin {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  background-color: #FF5A5F;
+  color: white;
+  border: none;
+}
+
+.separatorLine {
+  top: 50%;
+  width: 100%;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.toSignup {
+  display: flex;
+  justify-content: center;
+}
+
+.signupLink {
+  margin-left: 15px;
+  color: #008489;
+  cursor: pointer;
+}
