@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import IconInput from './IconInput';
 
-import './LoginModal.css';
+import './SignupModal.css';
 
-class LoginModal extends Component {
+class SignupModal extends Component {
   constructor(props){
     super(props);
   
@@ -28,21 +28,21 @@ class LoginModal extends Component {
     const { openModal } = this.props;
 
     return (
-      <div className="loginModal">
-        <div className="socialLogins">
-          <div className="facebookLogin">
+      <div className="signupModal">
+        <div className="socialSignups">
+          <div className="facebookSignup">
             <i className="socialLogo fab fa-facebook-square" />
-            페이스북 계정으로 로그인
+            페이스북 계정으로 회원가입
           </div>
-          <div className="googleLogin">
+          <div className="googleSignup">
             <i className="socialLogo fab fa-google" />
-            구글 계정으로 로그인
+            구글 계정으로 회원가입
           </div>
         </div>
         <div className="separator">
           <span className="separatorText"> 또는 </span>
         </div>
-        <form className="emailLoginForm">
+        <form className="emailSignupForm">
           <IconInput 
             name="email"
             value={this.state.email} 
@@ -50,26 +50,16 @@ class LoginModal extends Component {
             inputType="email" 
             inputPlaceholder="이메일 주소" 
             iconClass="far fa-envelope fa-lg" />
-          <IconInput 
-            name="password"
-            value={this.state.password}
-            changeHandler={this.handleInputChange}
-            inputType="password" 
-            inputPlaceholder="비밀번호" 
-            iconClass="fas fa-lock fa-lg" />
-          <div className="forgotPassword">
-            비밀번호가 생각나지 않으세요?
-          </div>
-          <button type="submit" className="emailLogin">
-            로그인
+          <button type="submit" className="emailSignup">
+            이메일로 회원가입 링크 보내기
           </button>
           <div className="separator">
             <div className="separatorLine" />
           </div>
-          <div className="toSignup">
-            나눔 계정이 없으세요? 
-            <span className="signupLink" onClick={() => openModal("signup")}>
-              회원가입
+          <div className="toLogin">
+            이미 나눔 계정이 있으세요?
+            <span className="loginButton" onClick={() => openModal("login")}>
+              로그인
             </span>
           </div>
         </form>
@@ -78,4 +68,4 @@ class LoginModal extends Component {
   }
 };
 
-export default LoginModal;
+export default SignupModal;

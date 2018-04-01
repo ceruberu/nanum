@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoginModal from '../components/LoginModal';
+import SignupModal from '../components/SignupModal';
 import './Modal.css';
 
 // const Modal = ({ modal }) => {
@@ -13,11 +14,14 @@ class Modal extends Component {
   }
 
   render() {
-    const { modal, onCloseClick } = this.props;
+    const { modal, onOpenClick, onCloseClick } = this.props;
     let modalComponent;
     if (modal === "login"){
-      modalComponent = <LoginModal />
+      modalComponent = <LoginModal openModal={onOpenClick} />;
+    } else if (modal === "signup"){
+      modalComponent = <SignupModal openModal={onOpenClick} />;
     }
+
     return (
       <div className="modalWrapper" onClick={e => {
         if(e.target === e.currentTarget) {
