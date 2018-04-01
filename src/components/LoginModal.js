@@ -44,18 +44,24 @@ class LoginModal extends Component {
         </div>
         <form className="emailLoginForm">
           <IconInput 
-            name="email"
+            inputProps={{
+              name: "email",
+              type: "email",
+              placeholder: "이메일 주소"
+            }}
             value={this.state.email} 
             changeHandler={this.handleInputChange}
-            inputType="email" 
-            inputPlaceholder="이메일 주소" 
             iconClass="far fa-envelope fa-lg" />
           <IconInput 
-            name="password"
+            inputProps={{
+              name: "password",
+              type: "password",
+              placeholder: "비밀번호",
+              pattern: "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$",
+              title: "비밀번호는 문자, 숫자의 조합으로 최소 8자리를 사용해야 합니다ะ"
+            }}
             value={this.state.password}
             changeHandler={this.handleInputChange}
-            inputType="password" 
-            inputPlaceholder="비밀번호" 
             iconClass="fas fa-lock fa-lg" />
           <div className="forgotPassword">
             비밀번호가 생각나지 않으세요?

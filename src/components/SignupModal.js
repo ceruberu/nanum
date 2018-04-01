@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IconInput from './IconInput';
+import { validateEmail } from '../utils/formValidators';
 
 import './SignupModal.css';
 
@@ -8,11 +9,12 @@ class SignupModal extends Component {
     super(props);
   
     this.state = {
-      email: null,
-      password: null
+      email: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleInputChange(event){
@@ -22,6 +24,11 @@ class SignupModal extends Component {
     this.setState({
       [name]: value
     });
+  }
+
+  handleSubmit(){
+    const emailEnum = validateEmail(this.state.email);
+
   }
 
   render(){
@@ -42,13 +49,15 @@ class SignupModal extends Component {
         <div className="separator">
           <span className="separatorText"> 또는 </span>
         </div>
-        <form className="emailSignupForm">
+        <form className="emailSignupForm" onSubmit={()=>this.handleSubmit()}>
           <IconInput 
-            name="email"
+            inputProps={{
+              name: "email",
+              type: "email",
+              placeholder: "이메일 주소"
+            }}
             value={this.state.email} 
             changeHandler={this.handleInputChange}
-            inputType="email" 
-            inputPlaceholder="이메일 주소" 
             iconClass="far fa-envelope fa-lg" />
           <button type="submit" className="emailSignup">
             이메일로 회원가입 링크 보내기
