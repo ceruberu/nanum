@@ -1,50 +1,31 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import Waypoint from 'react-waypoint';
-import gql from 'graphql-tag';
+import { feedQuery } from '../graphql';
 import Card from './Card';
 
-const FEED_QUERY = gql`
-  query ($limit: Int!, $after: Cursor){
-    itemFeed(limit: $limit, after: $after) {
-      edges {
-        cursor
-        node {
-          _id
-          title
-          fromNow
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
-    }
-  }
-`;
-
 const CardList = () => (
-  <Query query={FEED_QUERY} variables={{limit: 20}}> 
+  <Query query={feedQuery} variables={{limit: 20}}> 
     {({ loading, error, data, fetchMore }) => {
       if (loading) return "Loading...";
       if (error) return `Error! ${error.message}`;
       return (
         <div className="card-container">
-          {data.itemFeed.edges.map(edge => <Card key={edge.node._id} item={edge.node} />)}
+          {data.feedQuery.edges.map(edge => <Card key={edge.node._id} item={edge.node} />)}
           {
-            data.itemFeed.pageInfo.hasNextPage && 
+            data.feedQuery.pageInfo.hasNextPage && 
             <Waypoint
               onEnter={()=>{
                 fetchMore({
                   variables: {
-                    after: data.itemFeed.pageInfo.endCursor
+                    after: data.feedQuery.pageInfo.endCursor
                   },
                   updateQuery: (previousResult, { fetchMoreResult }) => {
                     return {
-                      itemFeed: {
-                        __typename: previousResult.itemFeed.__typename,
-                        edges: [...previousResult.itemFeed.edges, ...fetchMoreResult.itemFeed.edges],
-                        pageInfo: fetchMoreResult.itemFeed.pageInfo
+                      feedQuery: {
+                        __typename: previousResult.feedQuery.__typename,
+                        edges: [...previousResult.feedQuery.edges, ...fetchMoreResult.feedQuery.edges],
+                        pageInfo: fetchMoreResult.feedQuery.pageInfo
                       }
                     };
                   }

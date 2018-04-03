@@ -9,7 +9,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
-// import { setContext } from 'apollo-link-context';
+import { setContext } from 'apollo-link-context';
 
 import './index.css';
 import App from './App';
@@ -43,23 +43,21 @@ const stateLink = withClientState({
   resolvers: stateResolvers
 });
 
-// const authLink = setContext((_, { headers }) => {
-//   console.log("HEADERS:::", _, headers);
-//   // console.log("AUTH LINK::: ", store.getState());
-//   // const token = store.getState().authToken;
-//   const token = localStorage.getItem('token');
-//   console.log("AUTH LINK: TOKEN::", token);
+const authLink = setContext((_, { headers }) => {
+  console.log("HEADERS:::", _, headers);
+  const token = localStorage.getItem('token');
+  console.log("AUTH LINK: TOKEN::", token);
 
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : "",
-//     }
-//   }
-// });
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
 
 const link = ApolloLink.from([
-  // authLink,
+  authLink,
   stateLink,
   new HttpLink({ 
     uri: 'http://localhost:4000/graphql',
