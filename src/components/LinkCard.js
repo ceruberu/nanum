@@ -6,12 +6,13 @@ import Card from './Card';
 
 const FEED_QUERY = gql`
   query ($limit: Int!, $after: Cursor){
-    mainQuery(limit: $limit, after: $after) {
+    itemFeed(limit: $limit, after: $after) {
       edges {
         cursor
         node {
           _id
           title
+          fromNow
         }
       }
       pageInfo {
@@ -29,21 +30,21 @@ const CardList = () => (
       if (error) return `Error! ${error.message}`;
       return (
         <div className="card-container">
-          {data.mainQuery.edges.map(edge => <Card key={edge.node._id} item={edge.node} />)}
+          {data.itemFeed.edges.map(edge => <Card key={edge.node._id} item={edge.node} />)}
           {
-            data.mainQuery.pageInfo.hasNextPage && 
+            data.itemFeed.pageInfo.hasNextPage && 
             <Waypoint
               onEnter={()=>{
                 fetchMore({
                   variables: {
-                    after: data.mainQuery.pageInfo.endCursor
+                    after: data.itemFeed.pageInfo.endCursor
                   },
                   updateQuery: (previousResult, { fetchMoreResult }) => {
                     return {
-                      mainQuery: {
-                        __typename: previousResult.mainQuery.__typename,
-                        edges: [...previousResult.mainQuery.edges, ...fetchMoreResult.mainQuery.edges],
-                        pageInfo: fetchMoreResult.mainQuery.pageInfo
+                      itemFeed: {
+                        __typename: previousResult.itemFeed.__typename,
+                        edges: [...previousResult.itemFeed.edges, ...fetchMoreResult.itemFeed.edges],
+                        pageInfo: fetchMoreResult.itemFeed.pageInfo
                       }
                     };
                   }

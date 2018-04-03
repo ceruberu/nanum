@@ -10,27 +10,28 @@ class Modal extends Component {
   }
 
   componentWillUnmount(){
-    document.body.className = "";
+    document.body.className = document.body.className.replace("modalOpen", "");
   }
 
   render() {
-    const { modal, onOpenClick, onCloseClick } = this.props;
+    const { modal, modalChange } = this.props;
     let modalComponent;
+
     if (modal === "login"){
-      modalComponent = <LoginModal openModal={onOpenClick} />;
+      modalComponent = <LoginModal modalChange={input => modalChange(input)} />;
     } else if (modal === "signup"){
-      modalComponent = <SignupModal openModal={onOpenClick} />;
+      modalComponent = <SignupModal modalChange={input => modalChange(input)} />;
     }
 
     return (
       <div className="modalWrapper" onClick={e => {
         if(e.target === e.currentTarget) {
-          onCloseClick();
+          modalChange(false);
        }
       }}>
         <div className="modal">
           <div className="modalHeader">
-            <button className="modalCloseButton" onClick={()=>onCloseClick()}>
+            <button className="modalCloseButton" onClick={()=>modalChange(false)}>
               <i className="fas fa-times fa-lg" />
             </button>
           </div>

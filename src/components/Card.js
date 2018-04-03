@@ -20,6 +20,7 @@ class Card extends Component {
             {this.props.item.title}
           </Link>
           <div className="info">
+            <span className="card-tags">{this.props.item.fromNow}</span>
             <span className="card-tags">#거울</span>
           </div>
         </div>

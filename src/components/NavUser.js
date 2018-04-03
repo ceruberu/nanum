@@ -2,7 +2,9 @@ import React from 'react';
 import UserDisplay from '../images/userDisplay.jpg';
 import './NavUser.css';
 
-const NavUser = (props) => {
+
+const NavUser = props => {
+  const { onOpenClick } = props;
   return props.isAuthenticated ?
     <div className="navUser">
       <img className="userDisplay" alt="Display" src={UserDisplay} />
@@ -10,7 +12,7 @@ const NavUser = (props) => {
     </div>
   :     
     <div className="navUser">
-      <div className="loginLink" onClick={()=>props.onLoginClick("login")}> 로그인 </div>
+      <div className="loginLink" onClick={()=>onOpenClick("login")}> 로그인 </div>
     </div>
 
 };

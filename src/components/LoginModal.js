@@ -25,7 +25,7 @@ class LoginModal extends Component {
   }
 
   render(){
-    const { openModal } = this.props;
+    const { modalChange } = this.props;
 
     return (
       <div className="loginModal">
@@ -74,7 +74,7 @@ class LoginModal extends Component {
           </div>
           <div className="toSignup">
             나눔 계정이 없으세요? 
-            <span className="signupLink" onClick={() => openModal("signup")}>
+            <span className="signupLink" onClick={() => modalChange("signup")}>
               회원가입
             </span>
           </div>

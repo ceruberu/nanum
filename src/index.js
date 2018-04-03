@@ -1,36 +1,82 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 // APOLLO 
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
-// REDUX
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom'
+import { withClientState } from 'apollo-link-state';
+import { ApolloLink } from 'apollo-link';
+// import { setContext } from 'apollo-link-context';
 
 import './index.css';
 import App from './App';
-import store from './store';
 import registerServiceWorker from './registerServiceWorker';
 
-const httpLink = new HttpLink({ 
-  uri: 'http://localhost:4000/graphql',
+const cache = new InMemoryCache();
+
+const defaultState = {
+  modal: false,
+  user: {
+    isAuthenticated: false,
+    __typename: 'user'
+  }
+};
+
+const stateResolvers = {
+  Mutation: {
+    modalChange: (_, { modal }, { cache }) => {
+      const data = {
+        modal
+      };
+      cache.writeData({ data });
+      return null;
+    }
+  }
+}
+
+const stateLink = withClientState({
+  cache,
+  defaults: defaultState,
+  resolvers: stateResolvers
 });
+
+// const authLink = setContext((_, { headers }) => {
+//   console.log("HEADERS:::", _, headers);
+//   // console.log("AUTH LINK::: ", store.getState());
+//   // const token = store.getState().authToken;
+//   const token = localStorage.getItem('token');
+//   console.log("AUTH LINK: TOKEN::", token);
+
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : "",
+//     }
+//   }
+// });
+
+const link = ApolloLink.from([
+  // authLink,
+  stateLink,
+  new HttpLink({ 
+    uri: 'http://localhost:4000/graphql',
+  })
+]);
+
 const client = new ApolloClient({
-  link: httpLink,
-  cache: new InMemoryCache()
+  link,
+  cache,
+  connectToDevTools: true
 });
 
 ReactDOM.render((
   <ApolloProvider client={client}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ApolloProvider>
 
 ), document.getElementById('root'));

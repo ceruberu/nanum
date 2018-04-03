@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { compose, graphql } from 'react-apollo';
 import { NavLink } from 'react-router-dom';
 import Address from '../components/Address';
 import NavUser from '../components/NavUser';
-import { openModal } from '../actions/modalAction';
+import { userQuery } from '../graphql';
 import './Header.css';
 
 class Header extends Component {
   constructor(props){
     super(props);
-    console.log("PROPS:: ",props);
     this.state = {
       isSearching: false
     };
-    console.log("STATE::", this.state);
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -35,8 +33,7 @@ class Header extends Component {
   }
 
   render() {
-    const { user, onLoginClick } = this.props;
-    console.log("MAP DISAPTCH::", this.props);
+    const { userQuery, modalChange } = this.props;
     return [
       <div className="header" key="1234">
         <div className="headerTitle">나눔</div>
@@ -59,8 +56,8 @@ class Header extends Component {
           <i className="nav-search fa fa-search"/>
         </button>
         <NavUser 
-          isAuthenticated={user.isAuthenticated}
-          onLoginClick={modal => onLoginClick(modal)}   
+          isAuthenticated={userQuery.isAuthenticated}
+          onOpenClick={modal => modalChange(modal)}   
         />
       </div>
       ,
@@ -71,23 +68,8 @@ class Header extends Component {
       </div>
     ]
   }
-}
+};
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onLoginClick: (modal) => {
-      dispatch(openModal(modal));
-    }
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  graphql(userQuery, { name: 'userQuery' })
 )(Header);
