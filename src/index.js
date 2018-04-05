@@ -7,8 +7,8 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
+import { withClientState } from 'apollo-link-state';
 import { setContext } from 'apollo-link-context';
 
 import './index.css';
@@ -18,11 +18,7 @@ import registerServiceWorker from './registerServiceWorker';
 const cache = new InMemoryCache();
 
 const defaultState = {
-  modal: false,
-  user: {
-    isAuthenticated: false,
-    __typename: 'user'
-  }
+  modal: false
 };
 
 const stateResolvers = {
@@ -44,17 +40,14 @@ const stateLink = withClientState({
 });
 
 const authLink = setContext((_, { headers }) => {
-  console.log("HEADERS:::", _, headers);
   const token = localStorage.getItem('token');
-  console.log("AUTH LINK: TOKEN::", token);
-
   return {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
     }
   }
-});
+}); 
 
 const link = ApolloLink.from([
   authLink,

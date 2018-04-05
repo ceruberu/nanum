@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { compose, graphql } from 'react-apollo';
 import { NavLink } from 'react-router-dom';
 import Address from '../components/Address';
 import NavUser from '../components/NavUser';
-import { userQuery } from '../graphql';
+
 import './Header.css';
 
 class Header extends Component {
@@ -33,7 +32,7 @@ class Header extends Component {
   }
 
   render() {
-    const { userQuery, modalChange } = this.props;
+    const { modalChange } = this.props;
     return [
       <div className="header" key="1234">
         <div className="headerTitle">나눔</div>
@@ -56,7 +55,6 @@ class Header extends Component {
           <i className="nav-search fa fa-search"/>
         </button>
         <NavUser 
-          isAuthenticated={userQuery.isAuthenticated}
           onOpenClick={modal => modalChange(modal)}   
         />
       </div>
@@ -70,6 +68,4 @@ class Header extends Component {
   }
 };
 
-export default compose(
-  graphql(userQuery, { name: 'userQuery' })
-)(Header);
+export default Header;
