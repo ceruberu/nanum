@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Route } from 'react-router-dom';
+import { withRouter, Route, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import Modal from './containers/Modal';
 import Home from './containers/Home';
 import Share from './containers/Share';
+import Activate from './containers/Activate';
 import { currentUserQuery, modalQuery, modalChange } from './graphql';
 import './App.css';
 
@@ -49,10 +50,23 @@ class App extends Component {
 
   render(){
     const { 
-      // currentUserQuery, 
-      modalQuery 
+      currentUserQuery, 
+      modalQuery,
+      location
     } = this.props;
-    
+
+    // The Query is Not Skipped
+    if(currentUserQuery !== undefined) {
+      // The Query is Successful
+      if (currentUserQuery.networkStatus === 7) {
+        // The User is not activated and current pathname is not '/activate'
+        if( !currentUserQuery.currentUserQuery.activated && location.pathname !== "/activate"){
+          return <Redirect to="/activate" />
+        } 
+      }
+    }
+
+
     return (
       <div className="App">
         <Header 
@@ -60,6 +74,8 @@ class App extends Component {
         />
         <Route exact path="/" component={Home}/>
         <Route path="/share" component={Share}/>
+        <Route path="/activate" component={Activate}/>
+
         {
           modalQuery.modal 
           && 
@@ -74,13 +90,9 @@ class App extends Component {
 }
 
 export default compose(
+  withRouter,
   graphql(currentUserQuery, { 
     name: 'currentUserQuery',
-    options: {
-      variables: {
-        token: localStorage.getItem('token')
-      }
-    },
     skip: () => !localStorage.getItem('token'),
   }),
   graphql(modalQuery, { name: 'modalQuery' }),

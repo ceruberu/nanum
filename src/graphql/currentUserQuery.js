@@ -1,13 +1,15 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query currentUserQuery($token: String!) {
-    currentUserQuery(token: $token) {
+  query currentUserQuery {
+    currentUserQuery {
       _id
-      facebookUserId
-      facebookEmail
+      facebookUserId 
+      facebookEmail 
       isAuthenticated
+      activated
       pictureUrl
     }
   }
 `;
+

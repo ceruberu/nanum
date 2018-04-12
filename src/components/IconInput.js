@@ -10,10 +10,10 @@ class IconInput extends Component {
   }
 
   render() {
-    const { inputProps, changeHandler, iconClass } = this.props;
+    const { inputProps, changeHandler, iconClass, inputError } = this.props;
     
     return (
-      <div className={`inputContainer ${this.state.focused ? "focus" : ""}`} >
+      <div className={`inputContainer ${inputError? "error" : this.state.focused ? "focus" : ""}`} >
         <input 
           required
           onChange={(event)=>changeHandler(event)}
