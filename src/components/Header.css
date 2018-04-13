@@ -1,9 +1,15 @@
-.header {
+.headerWrapper {
   display: flex;
-  position: fixed;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
-  height: 60px;
+  height: 120px;
+  position: fixed;
+}
+
+.headerNav {
+  display: flex;
+  flex: 1;
+  align-items: center;
   border-bottom: 1px solid #e4e4e4;
   box-sizing: border-box;
   z-index: 10;
@@ -31,16 +37,15 @@
   /* margin-right: auto; */
 }
 
-.header-nav {
+.headerFilter {
   display: flex;
-  position: fixed;
+  flex: 1;
   background-color: white;
   border-bottom: 1px solid #e4e4e4;
   box-sizing: border-box;
   z-index: 9;
   width: 100%;
   height: 60px;
-  margin-top: 60px;
   min-width: 320px;
 }
 

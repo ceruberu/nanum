@@ -4,10 +4,9 @@ export default gql`
   query currentUserQuery {
     currentUserQuery {
       _id
-      facebookUserId 
-      facebookEmail 
+      email
+      facebookID 
       isAuthenticated
-      activated
       pictureUrl
     }
   }

@@ -1,0 +1,107 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 530px;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialSignups {
+  display: flex;
+  flex-direction: column;
+}
+
+.socialSignups div {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.socialLogo {
+  margin-right: 8px;
+}
+
+.facebookSignup {
+  color: white;
+  background-color: #4568b2;
+  margin-bottom: 8px;
+}
+
+.googleSignup {
+  border: 2px solid #767676;
+}
+
+.separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 25px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.separatorText {
+  color: #767676;
+}
+
+.separatorText::before {
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid #e4e4e4;
+  top: 50%;
+  left: 0%;
+  width: 44%;
+  z-index: -1;
+}
+
+.separatorText::after {
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid #e4e4e4;
+  top: 50%;
+  right: 0%;
+  width: 44%;
+  z-index: -1;
+}
+
+.emailSignupForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.emailSignup {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  background-color: #FF5A5F;
+  color: white;
+  border: none;
+}
+
+.separatorLine {
+  top: 50%;
+  width: 100%;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.toLogin {
+  display: flex;
+  justify-content: center;
+}
+
+.loginButton {
+  margin-left: 15px;
+  color: #008489;
+  cursor: pointer;
+}
