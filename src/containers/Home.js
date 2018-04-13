@@ -1,6 +1,5 @@
 import React from 'react';
 import LinkCard from '../components/LinkCard';
-
 import './Home.css';
 
 const Home = () => {

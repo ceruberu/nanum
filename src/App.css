@@ -1,14 +1,18 @@
-.app {
-
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: hidden;
 }  
 .wrap {
   position: relative;
 }
 .container {
+  background-image: url("images/creampaper.png");
   display: flex;
   justify-content: center;
+  overflow-y: scroll;
   height: 100%;
-  padding-top: 120px;
   min-width: 320px;
 }
 

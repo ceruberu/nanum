@@ -43,7 +43,7 @@ class App extends Component {
     const { location } = this.props;
 
     return (
-      <div className="App">
+      <div id="app">
         {location.pathname.split("/")[1] !== "auth" && <Header />}
         <Route exact path="/" component={Home} />
         <Route path="/share" component={Share} />
